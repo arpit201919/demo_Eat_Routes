@@ -30,5 +30,27 @@ export const styles = StyleSheet.create({
         color: colors.white,
         fontFamily: typography.regular,
         textAlign: "center"
-    }
+    },
+    forgot: {
+        alignSelf: "flex-end",
+        marginTop: scaledSize(10)
+    },
+    forgotTxt: {
+        color: colors.white,
+        fontSize: scaledSize(13),
+        fontFamily: typography.medium
+    },
+    loginButton: {
+        backgroundColor: colors.primary,
+        borderWidth: 1,
+        borderColor: colors.white,
+        borderRadius: 30,
+        marginTop: 10,
+        paddingVertical: scaledSize(5)
+    },
+    buttonTitle: {
+        fontSize: 21,
+        fontFamily: typography.semiBold,
+        color: colors.white
+    },
 })
