@@ -43,6 +43,7 @@ const LoginMenu = ({ navigation }) => {
                             containerStyle={styles.buttonContainer}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={styles.buttonTitle}
+                            onPress={() => navigation.navigate("LoginSupplier")}
                         />
                         <Button
                             title={"I am a ff agent"}
