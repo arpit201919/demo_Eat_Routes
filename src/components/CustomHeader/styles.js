@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
     },
     titleStyle: {
         fontSize: scaledSize(20),
-        fontFamily: typography.medium,
+        //fontWeight: "bold",
+        fontFamily: typography.semiBold,
         color: colors.white
     },
     editIcon: {

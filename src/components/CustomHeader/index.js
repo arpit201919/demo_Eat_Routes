@@ -11,7 +11,7 @@ import FILTER from '../../assets/filter.png';
 const CustomHeader = ({ titleText, onBackPress, showEdit }) => {
     return (
         <View
-            edges={["right", "left", "top"]}
+            //edges={["right", "left"]}
             style={styles.container}
         >
             <View style={styles.mainView}>
