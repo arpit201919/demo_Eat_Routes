@@ -51,6 +51,7 @@ const LoginMenu = ({ navigation }) => {
                             containerStyle={styles.buttonContainer}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={styles.buttonTitle}
+                            onPress={() => navigation.navigate("LoginFF")}
                         />
                         <Button
                             title={"I am a staff member"}
@@ -58,6 +59,7 @@ const LoginMenu = ({ navigation }) => {
                             containerStyle={styles.buttonContainer}
                             buttonStyle={styles.buttonStyle}
                             titleStyle={styles.buttonTitle}
+                            onPress={() => navigation.navigate("LoginStaff")}
                         />
                         <View style={styles.noAcContainer}>
                             <Text style={styles.noAcText}>"Don't have account ?"</Text>

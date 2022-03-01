@@ -11,7 +11,7 @@ import LOGO from '../../../assets/logo_1.png';
 import typography from "../../../utils/theme/typography";
 import { Button } from "react-native-elements";
 
-const LoginSupplier = ({ navigation }) => {
+const LoginStaff = ({ navigation }) => {
     return (
         <View style={styles.containers}>
             <SafeAreaView
@@ -22,7 +22,8 @@ const LoginSupplier = ({ navigation }) => {
                     barStyle="dark-content"
                 />
                 <CustomHeader
-                    titleText="Login as Supplier"
+                    titleText="Login as Staff"
+                    onBackPress={() => navigation.goBack()}
                 />
                 <KeyboardAwareScrollView
                     contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.primary }}
@@ -62,4 +63,4 @@ const LoginSupplier = ({ navigation }) => {
     )
 }
 
-export default LoginSupplier;
+export default LoginStaff;

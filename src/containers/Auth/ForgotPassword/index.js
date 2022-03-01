@@ -11,7 +11,7 @@ import LOGO from '../../../assets/logo_1.png';
 import typography from "../../../utils/theme/typography";
 import { Button } from "react-native-elements";
 
-const LoginSupplier = ({ navigation }) => {
+const ForgotPassword = ({ navigation }) => {
     return (
         <View style={styles.containers}>
             <SafeAreaView
@@ -22,7 +22,7 @@ const LoginSupplier = ({ navigation }) => {
                     barStyle="dark-content"
                 />
                 <CustomHeader
-                    titleText="Login as Supplier"
+                    titleText="Forgot Password"
                 />
                 <KeyboardAwareScrollView
                     contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.primary }}
@@ -36,16 +36,12 @@ const LoginSupplier = ({ navigation }) => {
                                 style={styles.imageStyle}
                             />
                         </View>
+                        <Text style={styles.instructionsText}>
+                            Enter your register email below to recive password reset instructions.
+                        </Text>
                         <FloatingTextInput
-                            label="Email"
+                            label="Email Address"
                         />
-                        <FloatingTextInput
-                            label="Password"
-                            secureTextEntry
-                        />
-                        <TouchableOpacity style={styles.forgotContainer}>
-                            <Text style={styles.forgotText}>Forgot your password?</Text>
-                        </TouchableOpacity>
                         <Button
                             title={"Login"}
                             TouchableComponent={TouchableOpacity}
@@ -62,4 +58,4 @@ const LoginSupplier = ({ navigation }) => {
     )
 }
 
-export default LoginSupplier;
+export default ForgotPassword;

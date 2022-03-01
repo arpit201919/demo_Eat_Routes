@@ -25,14 +25,11 @@ export const styles = StyleSheet.create({
         height: scaledSize(150),
         width: scaledSize(150)
     },
-    forgotContainer: {
-        alignSelf: "flex-end",
-        marginTop: scaledSize(10)
-    },
-    forgotText: {
-        color: colors.primary,
-        fontFamily: typography.light,
-        fontSize: scaledSize(15)
+    instructionsText: {
+        fontSize: scaledSize(16),
+        fontFamily: typography.regular,
+        color: colors.text_label,
+        marginBottom: 20,
     },
     buttonCont: {
         borderRadius: scaledSize(22),

@@ -1,16 +1,12 @@
 import React from "react";
 import LoginMenu from "../containers/Auth/LoginMenu";
 import LoginCustomer from "../containers/Auth/LoginCustomer";
-import { createStackNavigator } from "@react-navigation/stack";
 import LoginSupplier from "../containers/Auth/LoginSupplier";
-import { SafeAreaView } from "react-native-safe-area-context";
-import colors from "../utils/theme/colors";
-import { Text, TouchableOpacity, View } from "react-native";
-import { Icon } from "react-native-elements";
-import { scaledSize } from "../utils";
-import typography from "../utils/theme/typography";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import setHeader from "../components/CustomHeader";
+import LoginFF from "../containers/Auth/LoginFF";
+import LoginStaff from "../containers/Auth/LoginStaff";
+import ForgotPassword from "../containers/Auth/ForgotPassword";
+import BrandSetup from "../containers/VendorOnboarding/BrandSetup";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +15,7 @@ const NotAuthenticated = () => {
         <Stack.Navigator
             headerMode="screen"
             screenOptions={{ headerShown: false }}
-            initialRouteName={"LoginSupplier"}
+            initialRouteName={"LoginMenu"}
         >
             <Stack.Screen
                 name="LoginMenu"
@@ -34,6 +30,22 @@ const NotAuthenticated = () => {
             <Stack.Screen
                 name="LoginSupplier"
                 component={LoginSupplier}
+            />
+            <Stack.Screen
+                name="LoginFFs"
+                component={LoginFF}
+            />
+            <Stack.Screen
+                name="LoginStaff"
+                component={LoginStaff}
+            />
+            <Stack.Screen
+                name="ForgotPassword"
+                component={ForgotPassword}
+            />
+            <Stack.Screen
+                name="BrandSetup"
+                component={BrandSetup}
             />
         </Stack.Navigator>
     )

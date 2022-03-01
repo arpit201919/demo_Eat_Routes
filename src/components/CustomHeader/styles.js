@@ -26,5 +26,9 @@ export const styles = StyleSheet.create({
     editIcon: {
         width: scaledSize(25),
         height: scaledSize(25)
+    },
+    filterIcon: {
+        width: scaledSize(20),
+        height: scaledSize(20)
     }
 })

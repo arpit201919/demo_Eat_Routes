@@ -10,7 +10,7 @@ import { scaledSize } from "../../../utils";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 
-const LoginCustomer = () => {
+const LoginCustomer = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <SafeAreaView style={{ flex: 1 }}>
@@ -66,6 +66,7 @@ const LoginCustomer = () => {
                             containerStyle={{ marginTop: scaledSize(22) }}
                             buttonStyle={styles.loginButton}
                             titleStyle={styles.buttonTitle}
+                            onPress={() => navigation.navigate("AuthTabs")}
                         />
                         <TouchableOpacity
                             style={styles.forgot}

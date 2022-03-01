@@ -8,25 +8,26 @@ import { styles } from "./styles";
 import EDIT from '../../assets/edit.png';
 import FILTER from '../../assets/filter.png';
 
-const CustomHeader = ({ titleText, onBackPress, showEdit }) => {
+const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter }) => {
     return (
         <View
             //edges={["right", "left"]}
             style={styles.container}
         >
-            <View style={styles.mainView}>
+            <View style={[styles.mainView, style]}>
                 <View style={styles.backIconCont}>
-                    <TouchableOpacity
-                        onPress={onBackPress}
-                    >
-                        <Icon
-                            name="chevron-back"
-                            type="ionicon"
-                            color={colors.white}
-                            size={scaledSize(25)}
-                            style={{ paddingRight: scaledSize(12) }}
-                        />
-                    </TouchableOpacity>
+                    {showBack ?
+                        <TouchableOpacity
+                            onPress={onBackPress}
+                        >
+                            <Icon
+                                name="chevron-back"
+                                type="ionicon"
+                                color={colors.white}
+                                size={scaledSize(25)}
+                                style={{ paddingRight: scaledSize(12) }}
+                            />
+                        </TouchableOpacity> : null}
                     <Text style={styles.titleStyle}>{titleText}</Text>
                 </View>
                 {showEdit ?
@@ -35,6 +36,14 @@ const CustomHeader = ({ titleText, onBackPress, showEdit }) => {
                             source={EDIT}
                             resizeMode="contain"
                             style={styles.editIcon}
+                        />
+                    </TouchableOpacity> : null}
+                {showFilter ?
+                    <TouchableOpacity>
+                        <Image
+                            source={FILTER}
+                            resizeMode="contain"
+                            style={styles.filterIcon}
                         />
                     </TouchableOpacity> : null}
             </View>
