@@ -30,5 +30,12 @@ export const styles = StyleSheet.create({
     filterIcon: {
         width: scaledSize(20),
         height: scaledSize(20)
-    }
+    },
+    filterTitleText: {
+        fontSize: 18,
+        color: colors.white,
+        fontFamily: typography.medium,
+        marginRight: scaledSize(4)
+    },
+
 })

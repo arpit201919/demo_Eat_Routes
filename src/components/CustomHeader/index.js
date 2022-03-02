@@ -8,7 +8,7 @@ import { styles } from "./styles";
 import EDIT from '../../assets/edit.png';
 import FILTER from '../../assets/filter.png';
 
-const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter }) => {
+const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter, onFilterPress, showIcon, filterTitle }) => {
     return (
         <View
             //edges={["right", "left"]}
@@ -39,12 +39,16 @@ const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showF
                         />
                     </TouchableOpacity> : null}
                 {showFilter ?
-                    <TouchableOpacity>
-                        <Image
-                            source={FILTER}
-                            resizeMode="contain"
-                            style={styles.filterIcon}
-                        />
+                    <TouchableOpacity
+                        onPress={onFilterPress}
+                    >
+                        {showIcon ?
+                            <Image
+                                source={FILTER}
+                                resizeMode="contain"
+                                style={styles.filterIcon}
+                            /> :
+                            <Text style={styles.filterTitleText}>{filterTitle}</Text>}
                     </TouchableOpacity> : null}
             </View>
         </View>

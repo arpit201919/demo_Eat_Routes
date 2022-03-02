@@ -10,6 +10,7 @@ import { Image, Text } from "react-native";
 import colors from "../utils/theme/colors";
 import typography from "../utils/theme/typography";
 import Brands from "../containers/Brands";
+import ClientMyProfile from "../containers/Auth/Account/ClientMyProfile";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,8 +42,8 @@ const AuthTabs = () => {
                 }}
             />
             <Tab.Screen
-                name="VendorProductDetail"
-                component={VendorProductDetail}
+                name="ClientMyProfile"
+                component={ClientMyProfile}
                 options={{
                     tabBarIcon: ({ focused, color, size }) => (
                         <Image
