@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomHeader from "../../../components/CustomHeader";
-import colors from "../../../utils/theme/colors";
+import CustomHeader from "../../components/CustomHeader";
+import colors from "../../utils/theme/colors";
+import { styles } from "./styles"
 
-const ClientMyProfile = () => {
+const Contact = () => {
     return (
         <View style={styles.containers}>
             <StatusBar
@@ -16,22 +17,15 @@ const ClientMyProfile = () => {
                 edges={['left', 'right', 'top']}
             >
                 <CustomHeader
-                    titleText={"Orders"}
+                    titleText={"Contact"}
                     onBackPress={() => navigation.goBack()}
                 />
                 <View style={{ backgroundColor: "white", flex: 1 }}>
-                    <Text>orders</Text>
+                    <Text>gg</Text>
                 </View>
             </SafeAreaView>
         </View>
     )
 }
 
-export const styles = StyleSheet.create({
-    containers: {
-        flex: 1,
-        backgroundColor: colors.primary
-    }
-})
-
-export default ClientMyProfile;
+export default Contact;

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { FlatList, StatusBar, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import colors from "../../utils/theme/colors";
+import colors, { colorArray } from "../../utils/theme/colors";
 import { styles } from "./styles";
 import CustomHeader from "../../components/CustomHeader";
+import typography from "../../utils/theme/typography";
+import { scaledSize } from "../../utils";
 
-const FilterScreen = () => {
+const FilterScreen = ({ navigation }) => {
     const Data = [
         { id: 1, name: "Protein" },
         { id: 2, name: "Category 2" },
@@ -17,13 +19,14 @@ const FilterScreen = () => {
     const [data, setData] = useState(Data);
 
     const renderItem = ({ item, index }) => {
+        const colors = colorArray[Math.floor(Math.random() * colorArray.length)]
         return (
             <TouchableOpacity style={styles.list}>
-                <View style={{ flexDirection: "row" }}>
-                    <View style={styles.imageCont}>
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <View style={[styles.imageCont, { backgroundColor: colors }]}>
                         <Text>{item.name.charAt(0)}</Text>
                     </View>
-                    <Text>{item.name}</Text>
+                    <Text style={styles.listName}>{item.name}</Text>
                 </View>
             </TouchableOpacity>
         )
@@ -43,6 +46,7 @@ const FilterScreen = () => {
                     titleText={"Filter"}
                     showBack
                     showFilter={true}
+                    onBackPress={() => navigation.goBack()}
                     filterTitle={"Clear filters"}
                 />
                 <View style={styles.mainView}>

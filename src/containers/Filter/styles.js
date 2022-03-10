@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { scaledSize } from "../../utils";
 import colors from "../../utils/theme/colors";
+import typography from "../../utils/theme/typography";
 
 export const styles = StyleSheet.create({
     container: {
@@ -15,17 +16,23 @@ export const styles = StyleSheet.create({
         paddingHorizontal: "5%"
     },
     list: {
-        backgroundColor: "skyblue",
         borderBottomWidth: 1,
         height: scaledSize(65),
         justifyContent: "space-between",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        borderBottomColor: colors.borderColor
     },
     imageCont: {
-        backgroundColor: "yellow",
-        height: scaledSize(40),
-        width: scaledSize(40),
-        borderRadius: 20
+        height: scaledSize(45),
+        width: scaledSize(45),
+        borderRadius: 24,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    listName: {
+        fontSize: 18,
+        fontFamily: typography.regular,
+        marginLeft: scaledSize(12)
     }
 })
