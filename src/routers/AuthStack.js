@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const AuthStack = () => {
     return (
         <Stack.Navigator
-            initialRouteName="NotAuthenticated"
+            initialRouteName="AuthTabs"
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen

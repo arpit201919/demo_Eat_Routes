@@ -23,6 +23,8 @@ const LoginSupplier = ({ navigation }) => {
                 />
                 <CustomHeader
                     titleText="Login as Supplier"
+                    showBack={true}
+                    onBackPress={() => navigation.goBack()}
                 />
                 <KeyboardAwareScrollView
                     contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.primary }}

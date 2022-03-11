@@ -6,6 +6,7 @@ import { styles } from "./styles";
 import CustomHeader from "../../components/CustomHeader";
 import typography from "../../utils/theme/typography";
 import { scaledSize } from "../../utils";
+import { Button, CheckBox } from "react-native-elements";
 
 const FilterScreen = ({ navigation }) => {
     const Data = [
@@ -28,6 +29,8 @@ const FilterScreen = ({ navigation }) => {
                     </View>
                     <Text style={styles.listName}>{item.name}</Text>
                 </View>
+                <CheckBox
+                />
             </TouchableOpacity>
         )
     }
@@ -54,6 +57,13 @@ const FilterScreen = ({ navigation }) => {
                         data={data}
                         keyExtractor={(item) => item.id}
                         renderItem={renderItem}
+                    />
+                    <Button
+                        TouchableComponent={TouchableOpacity}
+                        title={"Appply Filters"}
+                        containerStyle={{ borderRadius: 28, marginBottom: scaledSize(18) }}
+                        buttonStyle={{ backgroundColor: colors.primary, height: scaledSize(48) }}
+                        titleStyle={{ fontSize: 22, fontFamily: typography.regular, fontWeight: "800" }}
                     />
                 </View>
             </SafeAreaView>

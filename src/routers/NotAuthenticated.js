@@ -32,7 +32,7 @@ const NotAuthenticated = () => {
                 component={LoginSupplier}
             />
             <Stack.Screen
-                name="LoginFFs"
+                name="LoginFF"
                 component={LoginFF}
             />
             <Stack.Screen

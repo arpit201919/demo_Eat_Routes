@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "48405723278",
+    "project_id": "eatroute-793d4",
+    "storage_bucket": "eatroute-793d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48405723278:android:0bf0800899d459239f71df",
+        "android_client_info": {
+          "package_name": "com.eat_routes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48405723278-6qojcnofa9t03ss3hd1r2jp7trl795lo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxwxD-_XYVlHrDksrWFqOuV3YGzbMSNr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48405723278-6qojcnofa9t03ss3hd1r2jp7trl795lo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

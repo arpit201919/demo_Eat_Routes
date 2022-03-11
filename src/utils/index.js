@@ -27,3 +27,11 @@ export const deviceRelativeWidth = (percent) => {
 export const deviceRelativeHeight = (percent) => {
     return (height * percent) / 100;
 };
+
+export const EmailRegExp = new RegExp(
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{1,}))$/,
+);
+
+export const PhoneRegExp = new RegExp(
+    /^\+([0-9]{1,3}|[0-9]{1,2}\-[0-9]{1,4})[0-9]{10,11}$/m,
+);

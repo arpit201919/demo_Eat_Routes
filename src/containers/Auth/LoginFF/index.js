@@ -23,6 +23,7 @@ const LoginFF = ({ navigation }) => {
                 />
                 <CustomHeader
                     titleText="Login as ff Agent"
+                    showBack={true}
                     onBackPress={() => navigation.goBack()}
                 />
                 <KeyboardAwareScrollView

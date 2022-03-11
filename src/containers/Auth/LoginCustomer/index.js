@@ -1,16 +1,50 @@
-import React from "react";
-import { View, Text, Image, StatusBar, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Image, StatusBar, TouchableOpacity, ActivityIndicator } from "react-native";
 import { Button } from "react-native-elements";
-import { color } from "react-native-elements/dist/helpers";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LOGO from "../../../assets/logo_white.png";
 import FloatingTextInput from "../../../components/FloatingTextInput";
-import { scaledSize } from "../../../utils";
+import { EmailRegExp, scaledSize } from "../../../utils";
 import colors from "../../../utils/theme/colors";
+import messaging from "@react-native-firebase/messaging";
 import { styles } from "./styles";
+import { authApi } from "../../../services/auth";
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 const LoginCustomer = ({ navigation }) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    console.log("---->>>", email, password);
+
+    const onLoginPress = async () => {
+        setLoading(true);
+        const data = {
+            username: email,
+            password: password
+        }
+        const response = await authApi(data);
+        setLoading(false)
+        if (response?.data.statusCode === 400) {
+            console.log("hh");
+            showMessage({
+                message: response.data.errorMessage,
+                type: "info",
+                duration: 1850
+            })
+        }
+        console.log("authResponse-->>", response.data);
+        // messaging()
+        //     .getToken()
+        //     .then((token) => {
+        //         if (token) {
+        //             console.log(`device token id  ${Platform.OS} ` + token);
+        //         }
+        //     })
+    }
+
     return (
         <View style={styles.container}>
             <SafeAreaView style={{ flex: 1 }}>
@@ -18,6 +52,11 @@ const LoginCustomer = ({ navigation }) => {
                     barStyle={"dark-content"}
                     backgroundColor={colors.primary}
                 />
+                {loading ? <ActivityIndicator
+                    animating
+                    color={colors.white}
+                    size={"large"}
+                /> : null}
                 <KeyboardAwareScrollView
                     contentContainerStyle={{ flexGrow: 1 }}
                     showsVerticalScrollIndicator={false}
@@ -41,7 +80,9 @@ const LoginCustomer = ({ navigation }) => {
                             selectionColor={colors.white}
                             textColor={colors.white}
                             baseColor={colors.white}
-
+                            value={email}
+                            onChangeText={(text) => setEmail(text)}
+                            autoCapitalize={"none"}
                         />
                         <FloatingTextInput
                             label={"Password"}
@@ -50,9 +91,12 @@ const LoginCustomer = ({ navigation }) => {
                             selectionColor={colors.white}
                             textColor={colors.white}
                             baseColor={colors.white}
+                            value={password}
+                            onChangeText={(text) => setPassword(text)}
                         />
                         <TouchableOpacity
                             style={styles.forgot}
+                            onPress={() => navigation.navigate("ForgotPassword")}
                         >
                             <Text
                                 style={styles.forgotTxt}
@@ -66,10 +110,11 @@ const LoginCustomer = ({ navigation }) => {
                             containerStyle={{ marginTop: scaledSize(22) }}
                             buttonStyle={styles.loginButton}
                             titleStyle={styles.buttonTitle}
-                            onPress={() => navigation.navigate("AuthTabs")}
+                            onPress={() => onLoginPress()}
                         />
                         <TouchableOpacity
                             style={styles.forgot}
+                            onPress={() => navigation.navigate("LoginStaff")}
                         >
                             <Text
                                 style={styles.forgotTxt}

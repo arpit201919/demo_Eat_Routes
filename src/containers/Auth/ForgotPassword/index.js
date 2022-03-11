@@ -23,6 +23,8 @@ const ForgotPassword = ({ navigation }) => {
                 />
                 <CustomHeader
                     titleText="Forgot Password"
+                    showBack={true}
+                    onBackPress={() => navigation.goBack()}
                 />
                 <KeyboardAwareScrollView
                     contentContainerStyle={{ flexGrow: 1, backgroundColor: colors.primary }}

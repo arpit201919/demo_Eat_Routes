@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
         height: scaledSize(20)
     },
     filterTitleText: {
-        fontSize: 18,
+        fontSize: 20,
         color: colors.white,
         fontFamily: typography.medium,
         marginRight: scaledSize(4)

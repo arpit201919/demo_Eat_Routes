@@ -23,6 +23,7 @@ const LoginStaff = ({ navigation }) => {
                 />
                 <CustomHeader
                     titleText="Login as Staff"
+                    showBack={true}
                     onBackPress={() => navigation.goBack()}
                 />
                 <KeyboardAwareScrollView
