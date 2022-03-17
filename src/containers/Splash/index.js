@@ -12,8 +12,9 @@ const SplashScreen = ({ navigation }) => {
     }, []);
 
     const getInfo = async () => {
-        const value = await getData("logged")
-        if (value) {
+        const token = await getData("token");
+        const userType = await getData("userType");
+        if (token && userType) {
             navigation.navigate("AuthStack");
         } else {
             navigation.navigate("NotAuthenticated");

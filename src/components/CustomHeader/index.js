@@ -7,6 +7,7 @@ import colors from "../../utils/theme/colors";
 import { styles } from "./styles";
 import EDIT from '../../assets/edit.png';
 import FILTER from '../../assets/filter.png';
+import LOGO from '../../assets/logo_white.png';
 
 const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter, onFilterPress, showIcon, filterTitle }) => {
     return (
@@ -48,7 +49,19 @@ const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showF
                                 resizeMode="contain"
                                 style={styles.filterIcon}
                             /> :
-                            <Text style={styles.filterTitleText}>{filterTitle}</Text>}
+                            <TouchableOpacity>
+                                <Image
+                                    source={LOGO}
+                                    style={[
+                                        {
+                                            height: scaledSize(30),
+                                            resizeMode: 'contain',
+                                            width: scaledSize(46.5),
+                                        },
+                                    ]}
+                                />
+                            </TouchableOpacity>
+                        }
                     </TouchableOpacity> : null}
             </View>
         </View>

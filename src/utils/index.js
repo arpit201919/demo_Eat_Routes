@@ -35,3 +35,17 @@ export const EmailRegExp = new RegExp(
 export const PhoneRegExp = new RegExp(
     /^\+([0-9]{1,3}|[0-9]{1,2}\-[0-9]{1,4})[0-9]{10,11}$/m,
 );
+
+export async function LogOut(message) {
+    await AsyncStorage.removeItem('token');
+    await AsyncStorage.removeItem('userType');
+    await AsyncStorage.removeItem('id');
+    Alert.alert('', message || 'Data is changed from Admin', [
+        {
+            text: 'Logout',
+            onPress: () => {
+                resetToScreen('NotAuthenticated');
+            },
+        },
+    ]);
+}
