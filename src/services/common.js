@@ -14,3 +14,5 @@ export const getBrandDetailService = (id) => api.get(`/brand/${id}`);
 export const getSupplierProductListService = (id) => api.get(`/product/all`);
 
 export const addNewProductApi = (data) => api.post(`product/create-product`, data);
+
+export const putUpdateClientService = (id, data) => api.put(`/client/${id}`, data);

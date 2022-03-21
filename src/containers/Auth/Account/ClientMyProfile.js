@@ -54,8 +54,10 @@ const ClientMyProfile = ({ navigation }) => {
                 edges={['left', 'right', 'top']}
             >
                 <CustomHeader
-                    titleText={"Orders"}
+                    titleText={"My profile"}
                     onBackPress={() => navigation.goBack()}
+                    showEdit={true}
+                    onEditPress={() => navigation.navigate("EditClientMyProfile")}
                 />
                 <View style={{ backgroundColor: "white", flex: 1 }}>
                     {loading ? <ActivityIndicator

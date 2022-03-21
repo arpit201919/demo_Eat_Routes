@@ -24,8 +24,8 @@ export const styles = StyleSheet.create({
         color: colors.white
     },
     editIcon: {
-        width: scaledSize(25),
-        height: scaledSize(25)
+        width: scaledSize(20),
+        height: scaledSize(20)
     },
     filterIcon: {
         width: scaledSize(20),

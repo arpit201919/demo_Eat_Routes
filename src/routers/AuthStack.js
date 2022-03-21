@@ -4,6 +4,7 @@ import AuthTabs from "./AuthTabs";
 import FilterScreen from "../containers/Filter";
 import Brands from "../containers/Brands";
 import ChangePassword from "../containers/Auth/Account/changePassword";
+import EditClientMyProfile from "../containers/Auth/Account/editClientMyProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,10 @@ const AuthStack = (props) => {
             <Stack.Screen
                 name="ChangePassword"
                 component={ChangePassword}
+            />
+            <Stack.Screen
+                name="EditClientMyProfile"
+                component={EditClientMyProfile}
             />
             {/*<Stack.Screen
                 name="FilterScreen"

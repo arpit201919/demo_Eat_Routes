@@ -9,7 +9,7 @@ import EDIT from '../../assets/edit.png';
 import FILTER from '../../assets/filter.png';
 import LOGO from '../../assets/logo_white.png';
 
-const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter, onFilterPress, showIcon, filterTitle }) => {
+const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showFilter, onFilterPress, showIcon, filterTitle, onEditPress }) => {
     return (
         <View
             //edges={["right", "left"]}
@@ -32,7 +32,9 @@ const CustomHeader = ({ style, showBack, titleText, onBackPress, showEdit, showF
                     <Text style={styles.titleStyle}>{titleText}</Text>
                 </View>
                 {showEdit ?
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={onEditPress}
+                    >
                         <Image
                             source={EDIT}
                             resizeMode="contain"

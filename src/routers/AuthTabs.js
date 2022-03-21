@@ -19,6 +19,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FilterScreen from "../containers/Filter";
 import BrandDetails from "../containers/Brands/brandDetails";
 import VendorAddNewProduct from "../containers/Vendor/VendorAddNewProduct";
+import VendorQuotes from "../containers/Vendor/VendorQuotes/vendorQuotes";
+import VendorProfile from "../containers/Vendor/VendorProfile/vendorProfile";
+import StaffDetails from "../containers/StaffDetails/staffDetails";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,8 +67,7 @@ const VendorProductStack = () => {
 
 const AuthTabs = (props) => {
     const role = props?.route?.params?.type
-    console.log("role-->>", role);
-    if (role === "client") {
+    if (role?.type === "client") {
         return (
             <Tab.Navigator
                 initialRouteName="VendorProductListing"
@@ -78,6 +80,8 @@ const AuthTabs = (props) => {
                 <Tab.Screen
                     name="BrandStack"
                     component={BrandStack}
+                    //name="StaffDetails"
+                    //component={StaffDetails}
                     options={{
                         tabBarIcon: ({ focused, color, size }) => (
                             <Image
@@ -167,54 +171,88 @@ const AuthTabs = (props) => {
                 />
             </Tab.Navigator>
         )
-    } else {
-        return (
-            <Tab.Navigator
-                screenOptions={{
-                    headerShown: false,
-                    tabBarActiveTintColor: colors.primary
-                }}
-            >
-                <Tab.Screen
-                    name="VendorProductStack"
-                    component={VendorProductStack}
-                    options={{
-                        tabBarIcon: ({ focused, color, size }) => (
-                            <Image
-                                source={CustomerBrands}
-                                style={{ tintColor: color }}
-                                resizeMode="contain"
-                            />
-                        ),
-                        tabBarLabel: ({ focused, color, size }) => (
-                            <Text
-                                style={{ color: color, fontFamily: typography.medium }}
-                            >Products</Text>
-                        )
-                    }}
-                />
-                <Tab.Screen
-                    name="VendorAddNewProduct"
-                    component={VendorAddNewProduct}
-                    options={{
-                        tabBarIcon: ({ focused, color, size }) => (
-                            <Image
-                                source={CustomerBrands}
-                                style={{ tintColor: color }}
-                                resizeMode="contain"
-                            />
-                        ),
-                        tabBarLabel: ({ focused, color, size }) => (
-                            <Text
-                                style={{ color: color, fontFamily: typography.medium }}
-                            >Quotes</Text>
-                        )
-                    }}
-                />
-            </Tab.Navigator>
-        )
     }
-
+    return (
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false,
+                tabBarActiveTintColor: colors.primary
+            }}
+        >
+            <Tab.Screen
+                name="VendorProductStack"
+                component={VendorProductStack}
+                options={{
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <Image
+                            source={CustomerBrands}
+                            style={{ tintColor: color }}
+                            resizeMode="contain"
+                        />
+                    ),
+                    tabBarLabel: ({ focused, color, size }) => (
+                        <Text
+                            style={{ color: color, fontFamily: typography.medium }}
+                        >Products</Text>
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="VendorQuotes"
+                component={VendorQuotes}
+                options={{
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <Image
+                            source={User}
+                            style={{ tintColor: color }}
+                            resizeMode="contain"
+                        />
+                    ),
+                    tabBarLabel: ({ focused, color, size }) => (
+                        <Text
+                            style={{ color: color, fontFamily: typography.medium }}
+                        >Quotes</Text>
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="VendorAddNewProduct"
+                component={VendorAddNewProduct}
+                options={{
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <Image
+                            source={CustomerBrands}
+                            style={{ tintColor: color }}
+                            resizeMode="contain"
+                        />
+                    ),
+                    tabBarLabel: ({ focused, color, size }) => (
+                        <Text
+                            style={{ color: color, fontFamily: typography.medium }}
+                        >Add New</Text>
+                    )
+                }}
+            />
+            <Tab.Screen
+                name="VendorProfile"
+                component={VendorProfile}
+                options={{
+                    tabBarIcon: ({ focused, color, size }) => (
+                        <Image
+                            source={User}
+                            style={{ tintColor: color }}
+                            resizeMode="contain"
+                        />
+                    ),
+                    tabBarLabel: ({ focused, color, size }) => (
+                        <Text
+                            style={{ color: color, fontFamily: typography.medium }}
+                        >Profile</Text>
+                    )
+                }}
+            />
+        </Tab.Navigator>
+    )
 }
 
 export default AuthTabs;

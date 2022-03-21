@@ -35,7 +35,6 @@ instance.interceptors.request.use(
 // Add a response interceptor
 instance.interceptors.response.use(
     function (response) {
-        console.log("useResponse--", response);
         // console.log('response:', response.data);
         if (response.data.statusCode === 406) {
             LogOut(response?.data?.errorMessage ?? '');

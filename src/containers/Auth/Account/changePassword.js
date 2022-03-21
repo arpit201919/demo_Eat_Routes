@@ -116,6 +116,7 @@ const ChangePassword = ({ navigation }) => {
                         null}
                     <View style={{ paddingHorizontal: scaledSize(16) }}>
                         <FloatingTextInput
+                            secureTextEntry
                             label={"Old Password"}
                             ref={oldPasswordRef}
                             value={oldPassword}
@@ -125,6 +126,7 @@ const ChangePassword = ({ navigation }) => {
                             errorColor={colors.primary}
                         />
                         <FloatingTextInput
+                            secureTextEntry
                             label={"New Password"}
                             ref={newPasswordRef}
                             value={newPassword}
@@ -134,6 +136,7 @@ const ChangePassword = ({ navigation }) => {
                             errorColor={colors.primary}
                         />
                         <FloatingTextInput
+                            secureTextEntry
                             label={"Confirm Password"}
                             ref={confirmPasswordRef}
                             value={confirmPassword}
