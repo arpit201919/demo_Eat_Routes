@@ -16,79 +16,27 @@ import { setData } from "../../../utils/asyncStorage";
 import messaging from "@react-native-firebase/messaging";
 import { addDeviceTokenApi } from "../../../services/common";
 import { CommonActions } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { callLoginApi } from "../../../store/eatRoutesSlice";
 
 const LoginSupplier = ({ navigation }) => {
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const handleSignUp = async () => {
-        setLoading(true);
+    const handleSignUp = () => {
         const data = {
             username: email,
             password,
             role: "supplier"
         }
-        const response = await authApi(data);
 
-        console.log("suppRes-->>", response.data);
-        if (response.data.statusCode != 200) {
-            setLoading(false)
-            showMessage({
-                message: response.data.errorMessage,
-                duration: 1850,
-                backgroundColor: colors.primary
-            })
-        } else {
-            await setData("userType", "supplier")
-            await setData("token", response.data.data.token);
-            await setData("userId", JSON.stringify(response.data.data.user.id));
-            getDeviceToken();
-            setLoading(false);
-            navigation.dispatch(
-                CommonActions.reset({
-                    index: 0,
-                    routes: [
-                        {
-                            name: "AuthStack",
-                            params: {
-                                type: "supplier",
-                                temp_password: response.data.data.user.temp_password,
-                            }
-                        }
-                    ]
-                })
-            )
-        }
-    }
-
-    const getDeviceToken = () => {
-        messaging()
-            .getToken()
-            .then((token) => {
-                addDeviceToken(token)
-            })
-    };
-
-    const addDeviceToken = async (deviceToken) => {
-        await setData("deviceToken", deviceToken)
-        const data = {
-            device_id: deviceToken,
-            platform: Platform.OS === 'android' ? 'android' : "ios",
-            last_used: Math.floor(Date.now() / 1000)
-        }
-        const response = await addDeviceTokenApi(data);
-        console.log("addTokenSup-->>", response);
-        if (response.data.statusCode != 200) {
-            setLoading(false)
-            response != "logout" ? showMessage({
-                message: response.data.errorMessage,
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null
-        }
+        dispatch(callLoginApi(data, role = "supplier"));
+        navigation.navigate("AuthStack");
     }
 
     return (

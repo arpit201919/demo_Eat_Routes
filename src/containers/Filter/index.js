@@ -10,34 +10,24 @@ import { Button, CheckBox } from "react-native-elements";
 import { getCategoriesApi } from "../../services/common";
 import { showMessage } from "react-native-flash-message";
 import Brands from "../Brands";
+import { useDispatch, useSelector } from "react-redux";
+import { callFilterCategoryApi } from "../../store/eatRoutesSlice";
 
 const FilterScreen = ({ navigation, route }) => {
-    const [data, setData] = useState([]);
+    const { filterCategoryList } = useSelector((state) => state.eatRoutes);
+    const dispatch = useDispatch();
+    const [data, setData] = useState(filterCategoryList);
 
     useEffect(() => {
-        callCategoryListApi();
+        dispatch(callFilterCategoryApi())
     }, [])
-
-    const callCategoryListApi = async () => {
-        const response = await getCategoriesApi();
-        console.log("responseCat-->>", response.data);
-        if (response.data.statusCode !== 200) {
-            response !== 'logout' ? showMessage({
-                message: response.data.errorMessage,
-                type: "info",
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null;
-        } else {
-            setData(response.data.data)
-        }
-    }
 
     const onItemPress = (id) => {
         const array = [...data];
         for (let data of array) {
+            console.log("data-->>", data, id);
             if (data.id == id) {
-                data.isSelected = (data.isSelected == null) ? true : !data.isSelected;
+                data.isSelected = (data?.isSelected == null) ? true : false;
             }
         }
         setData(array);

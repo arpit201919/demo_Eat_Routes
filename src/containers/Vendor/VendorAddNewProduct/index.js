@@ -3,9 +3,11 @@ import { View, Text, StatusBar, ActivityIndicator, FlatList, TouchableOpacity } 
 import { Button } from "react-native-elements";
 import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
 import FloatingTextInput from "../../../components/FloatingTextInput";
 import { addNewProductApi, getSupplierProductListService } from "../../../services/common";
+import { callVendorAddNewProduct } from "../../../store/eatRoutesSlice";
 import { scaledSize } from "../../../utils";
 import { getData } from "../../../utils/asyncStorage";
 import colors from "../../../utils/theme/colors";
@@ -55,6 +57,7 @@ const VendorAddNewProduct = ({ navigation }) => {
         { id: 6, title: '43', isSelected: false },
     ];
 
+    const dispatch = useDispatch()
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState("");
     const [flavour, setFlavour] = useState("");
@@ -90,15 +93,8 @@ const VendorAddNewProduct = ({ navigation }) => {
             description: description,
             categories: quantity
         }
-        const response = await addNewProductApi(data)
-        console.log("responseAdd-->>", response.data);
-        if (response.data.statusCode !== 200) {
-            response != "logout" ? showMessage({
-                message: response.data.errorMessage,
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null
-        }
+
+        dispatch(callVendorAddNewProduct(data))
     }
 
     return (

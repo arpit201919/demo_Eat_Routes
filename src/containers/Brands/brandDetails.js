@@ -1,39 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image, StatusBar, TouchableOpacity, ActivityIndicator, Platform, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../components/CustomHeader";
 import { getBrandDetailService } from "../../services/common";
+import { fetchBrandDetails } from "../../store/eatRoutesSlice";
 import colors from "../../utils/theme/colors";
 
 const BrandDetails = ({ navigation, route }) => {
     const data = route.params.item;
     const [loading, setLoading] = useState(false);
-    const [brandDetail, setBrandDetail] = useState();
+    const dispatch = useDispatch();
+    const { brandDetail } = useSelector((state) => state.eatRoutes);
 
-    console.log("data--", data);
+    console.log("brandDetail-->>", brandDetail);
+
+    console.log("data--", data.id);
 
     useEffect(() => {
-        callGetBrandDetailApi();
+        dispatch(fetchBrandDetails(data.id))
     }, [])
-
-    const callGetBrandDetailApi = async () => {
-        setLoading(true)
-        const response = await getBrandDetailService(data.id);
-        console.log("response-->>", response.data);
-
-        if (response.data.statusCode !== 200) {
-            setLoading(false)
-            response !== 'logout' ? showMessage({
-                message: response.data.errorMessage,
-                type: "info",
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null;
-        } else {
-            setBrandDetail(response.data.data)
-            setLoading(false)
-        }
-    }
 
     return (
         <View style={styles.container}>
@@ -56,6 +42,8 @@ const BrandDetails = ({ navigation, route }) => {
                     size={"large"}
                 /> : null}
                 <View style={{ flex: 1, backgroundColor: "white" }}>
+                    <Text>Name-{brandDetail?.name}</Text>
+                    <Text>Order form-{brandDetail?.order_form}</Text>
 
                 </View>
             </SafeAreaView>

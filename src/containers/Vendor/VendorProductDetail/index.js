@@ -3,34 +3,25 @@ import { StatusBar } from "react-native";
 import { View, Text } from "react-native";
 import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
 import { getBrandDetailService } from "../../../services/common";
+import { getVendorProductDetails } from "../../../store/eatRoutesSlice";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 
 const VendorProductDetail = ({ navigation, route }) => {
+    const dispatch = useDispatch();
+    const { vendorProductDetails } = useSelector((state) => state.eatRoutes)
     const dataRe = route?.params?.item
-
     const [data, setData] = useState(dataRe);
     const [loading, setLoading] = useState(false);
 
     console.log("data-->>", data);
 
     useEffect(() => {
-        getProductDetail();
+        dispatch(getVendorProductDetails(data.id));
     }, []);
-
-    const getProductDetail = async () => {
-        const response = await getBrandDetailService(data.id);
-        console.log("response-->>", response.data);
-        if (response.data.statusCode !== 200) {
-            response != "logout" ? showMessage({
-                message: response.data.errorMessage,
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null
-        }
-    }
 
     return (
         <View style={styles.container}>
@@ -51,10 +42,10 @@ const VendorProductDetail = ({ navigation, route }) => {
                         size={"large"}
                         color={colors.primary}
                     /> : null}
-                    <Text>Name-{data.name}</Text>
-                    <Text>Description-{data.description}</Text>
-                    <Text>Sku-{data.sku}</Text>
-                    <Text>Brand_id-{data.brand_id}</Text>
+                    <Text>Name-{vendorProductDetails?.name}</Text>
+                    <Text>Description-{vendorProductDetails?.description}</Text>
+                    <Text>Sku-{vendorProductDetails?.sku}</Text>
+                    <Text>Brand_id-{vendorProductDetails?.brand_id}</Text>
 
                 </View>
             </SafeAreaView>

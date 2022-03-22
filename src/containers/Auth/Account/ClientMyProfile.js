@@ -3,14 +3,20 @@ import { View, Text, StyleSheet, StatusBar, ActivityIndicator } from "react-nati
 import { Button } from "react-native-elements";
 import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
+import { deleteDeviceTokenApi } from "../../../services/common";
 import { getUserDetailService } from "../../../services/user";
+import { callMyProfileApi } from "../../../store/eatRoutesSlice";
 import { getData } from "../../../utils/asyncStorage";
 import colors from "../../../utils/theme/colors";
 
 const ClientMyProfile = ({ navigation }) => {
+    const { userId } = useSelector((state) => state.eatRoutes);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        getUserDetail();
+        dispatch(callMyProfileApi(userId));
     }, [])
 
     const [loading, setLoading] = useState(false);

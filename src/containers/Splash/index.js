@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { useSelector } from "react-redux";
 import LOGO from "../../assets/logo_1.png";
 import { getData } from "../../utils/asyncStorage";
 import colors from "../../utils/theme/colors";
 
 const SplashScreen = ({ navigation }) => {
+    const { userType } = useSelector((state) => state.eatRoutes)
+
     useEffect(() => {
         setTimeout(() => {
             getInfo();
@@ -13,7 +16,6 @@ const SplashScreen = ({ navigation }) => {
 
     const getInfo = async () => {
         const token = await getData("token");
-        const userType = await getData("userType");
         if (token && userType) {
             navigation.navigate("AuthStack");
         } else {

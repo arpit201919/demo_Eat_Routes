@@ -8,8 +8,12 @@ import FloatingTextInput from "../../../components/FloatingTextInput";
 import { scaledSize } from "../../../utils";
 import { validatePathConfig } from "@react-navigation/native";
 import { changePasswordService } from "../../../services/auth";
+import { useDispatch } from "react-redux";
+import { onPasswordChange } from "../../../store/eatRoutesSlice";
 
 const ChangePassword = ({ navigation }) => {
+    const dispatch = useDispatch()
+
     const [loading, setLoading] = useState(false);
     const oldPasswordRef = useRef(null);
     const newPasswordRef = useRef(null);
@@ -29,7 +33,13 @@ const ChangePassword = ({ navigation }) => {
             return
         }
 
-        //callChangePasswordApi();
+        dispatch(onPasswordChange(
+            {
+                old_password: oldPassword,
+                password: newPassword,
+                password_confirmation: confirmPassword,
+            }
+        ))
     }
 
     const onValidate = () => {
@@ -72,24 +82,6 @@ const ChangePassword = ({ navigation }) => {
         setConfirmPasswordErr(confirmPasswordError);
 
         return false
-    }
-
-    const callChangePasswordApi = async () => {
-        const data = {
-            old_password: oldPassword,
-            password: newPassword,
-            password_confirmation: confirmPassword,
-        };
-
-        const response = await changePasswordService(data)
-        if (response.data.statusCode !== 200) {
-            response !== 'logout' ? showMessage({
-                message: response.data.errorMessage,
-                type: "info",
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null;
-        }
     }
 
     return (

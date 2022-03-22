@@ -2,38 +2,23 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StatusBar, ActivityIndicator, FlatList, TouchableOpacity } from "react-native";
 import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
 import { getSupplierProductListService } from "../../../services/common";
+import { getVendorProductList } from "../../../store/eatRoutesSlice";
 import { getData } from "../../../utils/asyncStorage";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 
 const VendorProductListing = ({ navigation }) => {
-
-    const [data, setData] = useState([]);
+    const { vendorProductList } = useSelector((state) => state.eatRoutes);
+    const dispatch = useDispatch()
+    const [data, setData] = useState(vendorProductList);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getVendorProductList();
+        dispatch(getVendorProductList());
     }, []);
-
-    const getVendorProductList = async () => {
-        setLoading(true);
-        //const value = await getData("userId")
-        const response = await getSupplierProductListService()
-        console.log("response-->>", response.data);
-        if (response.data.statusCode != 200) {
-            setLoading(false);
-            response != "logout" ? showMessage({
-                message: response.data.errorMessage,
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null
-        } else {
-            setData(response.data.data);
-            setLoading(false);
-        }
-    }
 
     const onItemClick = (item) => {
         navigation.navigate("VendorProductDetail", { item: item })

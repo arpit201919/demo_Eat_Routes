@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StatusBar, TouchableOpacity, Linking, Platform } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../components/CustomHeader";
 import { getUserDetailService } from "../../services/user";
+import { callContactDetailsApi } from "../../store/eatRoutesSlice";
 import { scaledSize } from "../../utils";
 import { getData } from "../../utils/asyncStorage";
 import colors from "../../utils/theme/colors";
@@ -10,32 +12,36 @@ import typography from "../../utils/theme/typography";
 import { styles } from "./styles"
 
 const Contact = () => {
+    const { staffId, contactDetails } = useSelector((state) => state.eatRoutes)
+    const dispatch = useDispatch();
+    console.log("staffId-->>", staffId);
+
     useEffect(() => {
-        getDetails()
+        dispatch(callContactDetailsApi(staffId))
     }, [])
 
     const [info, setInfo] = useState();
     const [loading, setLoading] = useState();
 
-    const getDetails = async () => {
-        setLoading(true)
-        const value = await getData("staffId")
-        console.log("staffId", value);
-        const response = await getUserDetailService(value);
-        console.log("conResponse-->>", response.data);
-        if (response.data.statusCode != 200) {
-            setLoading(false)
-            response != "logout" ? showMessage({
-                message: response.data.errorMessage,
-                type: "info",
-                duration: 1850,
-                backgroundColor: colors.primary
-            }) : null
-        } else {
-            setInfo(response.data.data);
-            setLoading(false);
-        }
-    }
+    // const getDetails = async () => {
+    //     setLoading(true)
+    //     const value = await getData("staffId")
+
+    //     const response = await getUserDetailService(value);
+    //     console.log("conResponse-->>", response.data);
+    //     if (response.data.statusCode != 200) {
+    //         setLoading(false)
+    //         response != "logout" ? showMessage({
+    //             message: response.data.errorMessage,
+    //             type: "info",
+    //             duration: 1850,
+    //             backgroundColor: colors.primary
+    //         }) : null
+    //     } else {
+    //         setInfo(response.data.data);
+    //         setLoading(false);
+    //     }
+    // }
 
     const onCallButtonPressed = (number) => {
         Platform.OS === "android" ? Linking.openURL(`tel:${number}`) : Linking.openURL(`telprompt:${number}`);
@@ -88,16 +94,16 @@ const Contact = () => {
                     <Text style={{ textAlign: "center", marginVertical: scaledSize(20), fontSize: 22, fontFamily: typography.light }}>{"Hani Vidhrani"}</Text>
                     <View>
                         <Text style={styles.labelStyle} >{"First Name"}</Text>
-                        <Text style={styles.textStyle}>{info?.first_name}</Text>
+                        <Text style={styles.textStyle}>{contactDetails?.first_name}</Text>
                         <Text style={styles.labelStyle}>{"Last Name"}</Text>
-                        <Text style={styles.textStyle}>{info?.last_name}</Text>
+                        <Text style={styles.textStyle}>{contactDetails?.last_name}</Text>
                         <Text style={styles.labelStyle} >{"Phone Number"}</Text>
-                        <Text style={styles.textStyle}>{info?.phone}</Text>
+                        <Text style={styles.textStyle}>{contactDetails?.phone}</Text>
                         <Text style={styles.labelStyle}>{"Email Address"}</Text>
                         <TouchableOpacity
                             onPress={() => onMailPress("test@example.com")}
                         >
-                            <Text style={styles.textStyle}>{info?.email}</Text>
+                            <Text style={styles.textStyle}>{contactDetails?.email}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
