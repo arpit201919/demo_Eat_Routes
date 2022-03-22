@@ -8,7 +8,6 @@ import { scaledSize } from "../../../utils";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 import LOGO from '../../../assets/logo_1.png';
-import typography from "../../../utils/theme/typography";
 import { Button } from "react-native-elements";
 
 const ForgotPassword = ({ navigation }) => {

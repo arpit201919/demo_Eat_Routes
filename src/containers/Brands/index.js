@@ -1,58 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StatusBar, FlatList, Image, ActivityIndicator, TouchableOpacity } from "react-native";
-import { Button } from "react-native-elements";
-import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../components/CustomHeader";
-import { brandSearchCategories, deleteDeviceTokenApi, getBrandsService } from "../../services/common";
-import { fetchBrand, selector } from "../../store/eatRoutesSlice";
-import { scaledSize } from "../../utils";
-import { getData, removeData } from "../../utils/asyncStorage";
+import { brandSearchCategories } from "../../services/common";
+import { fetchBrand } from "../../store/eatRoutesSlice";
 import colors from "../../utils/theme/colors";
 import { styles } from "./styles";
 
 const Brands = ({ navigation }) => {
-    //const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
     const { loading, brandList } = useSelector((state) => state.eatRoutes)
-    //const { brandList } = useSelector(selector)
 
     console.log("brandList==>>", brandList);
-    //const [brandList, setBrandList] = useState([]);
 
 
 
     useEffect(() => {
         dispatch(fetchBrand())
-        //getBrandList();
     }, []);
-
-    // useEffect(() => {
-    //     filterList()
-    // }, [brandList])
-
-    // const getBrandList = async () => {
-    //     setLoading(true);
-    //     try {
-    //         const response = await getBrandsService();
-    //         console.log("response-->>", response.data);
-    //         if (response.data.statusCode != 200) {
-    //             setLoading(false)
-    //             showMessage({
-    //                 message: response.data.errorMessage,
-    //                 type: "info",
-    //                 duration: 1850,
-    //                 backgroundColor: colors.primary
-    //             })
-    //         } else {
-    //             setBrandList(response.data.data);
-    //             setLoading(false);
-    //         }
-    //     } catch (error) {
-    //         throw error
-    //     }
-    // }
 
     const filterList = async (filteredData) => {
         console.log("hhgghghg", filteredData?.length);

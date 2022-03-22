@@ -7,9 +7,6 @@ import CustomHeader from "../../components/CustomHeader";
 import typography from "../../utils/theme/typography";
 import { scaledSize } from "../../utils";
 import { Button, CheckBox } from "react-native-elements";
-import { getCategoriesApi } from "../../services/common";
-import { showMessage } from "react-native-flash-message";
-import Brands from "../Brands";
 import { useDispatch, useSelector } from "react-redux";
 import { callFilterCategoryApi } from "../../store/eatRoutesSlice";
 

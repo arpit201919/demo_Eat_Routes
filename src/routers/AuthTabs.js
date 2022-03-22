@@ -21,8 +21,7 @@ import BrandDetails from "../containers/Brands/brandDetails";
 import VendorAddNewProduct from "../containers/Vendor/VendorAddNewProduct";
 import VendorQuotes from "../containers/Vendor/VendorQuotes/vendorQuotes";
 import VendorProfile from "../containers/Vendor/VendorProfile/vendorProfile";
-import StaffDetails from "../containers/StaffDetails/staffDetails";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

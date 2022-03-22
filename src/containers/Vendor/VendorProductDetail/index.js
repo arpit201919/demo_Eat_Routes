@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "react-native";
 import { View, Text } from "react-native";
-import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
-import { getBrandDetailService } from "../../../services/common";
 import { getVendorProductDetails } from "../../../store/eatRoutesSlice";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";

@@ -6,8 +6,6 @@ import CustomHeader from "../../../components/CustomHeader";
 import colors from "../../../utils/theme/colors";
 import FloatingTextInput from "../../../components/FloatingTextInput";
 import { scaledSize } from "../../../utils";
-import { validatePathConfig } from "@react-navigation/native";
-import { changePasswordService } from "../../../services/auth";
 import { useDispatch } from "react-redux";
 import { onPasswordChange } from "../../../store/eatRoutesSlice";
 

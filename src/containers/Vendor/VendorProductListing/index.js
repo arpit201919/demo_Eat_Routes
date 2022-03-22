@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StatusBar, ActivityIndicator, FlatList, TouchableOpacity } from "react-native";
-import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
-import { getSupplierProductListService } from "../../../services/common";
 import { getVendorProductList } from "../../../store/eatRoutesSlice";
-import { getData } from "../../../utils/asyncStorage";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 

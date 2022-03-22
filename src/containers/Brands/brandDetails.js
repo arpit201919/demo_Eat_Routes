@@ -3,7 +3,6 @@ import { View, Text, Image, StatusBar, TouchableOpacity, ActivityIndicator, Plat
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import CustomHeader from "../../components/CustomHeader";
-import { getBrandDetailService } from "../../services/common";
 import { fetchBrandDetails } from "../../store/eatRoutesSlice";
 import colors from "../../utils/theme/colors";
 

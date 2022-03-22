@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StatusBar, ActivityIndicator, FlatList, TouchableOpacity } from "react-native";
 import { Button } from "react-native-elements";
-import { showMessage } from "react-native-flash-message";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch } from "react-redux";
 import CustomHeader from "../../../components/CustomHeader";
 import FloatingTextInput from "../../../components/FloatingTextInput";
-import { addNewProductApi, getSupplierProductListService } from "../../../services/common";
 import { callVendorAddNewProduct } from "../../../store/eatRoutesSlice";
 import { scaledSize } from "../../../utils";
-import { getData } from "../../../utils/asyncStorage";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 

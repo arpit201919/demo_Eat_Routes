@@ -1,21 +1,14 @@
 import React, { useRef, useState } from "react";
 import { View, Text, StatusBar, Image, TouchableOpacity, Platform, ActivityIndicator } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import CustomHeader from "../../../components/CustomHeader";
 import FloatingTextInput from "../../../components/FloatingTextInput";
 import { scaledSize } from "../../../utils";
 import colors from "../../../utils/theme/colors";
 import { styles } from "./styles";
 import LOGO from '../../../assets/logo_1.png';
-import typography from "../../../utils/theme/typography";
 import { Button } from "react-native-elements";
-import { authApi } from "../../../services/auth";
-import { showMessage } from "react-native-flash-message";
-import { setData } from "../../../utils/asyncStorage";
-import messaging from "@react-native-firebase/messaging";
-import { addDeviceTokenApi } from "../../../services/common";
-import { CommonActions } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { callLoginApi } from "../../../store/eatRoutesSlice";
 

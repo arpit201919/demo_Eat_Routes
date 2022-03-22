@@ -5,15 +5,9 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { SafeAreaView } from "react-native-safe-area-context";
 import LOGO from "../../../assets/logo_white.png";
 import FloatingTextInput from "../../../components/FloatingTextInput";
-import { EmailRegExp, scaledSize } from "../../../utils";
+import { scaledSize } from "../../../utils";
 import colors from "../../../utils/theme/colors";
-import messaging from "@react-native-firebase/messaging";
 import { styles } from "./styles";
-import { authApi } from "../../../services/auth";
-import { showMessage, hideMessage } from "react-native-flash-message";
-import { setData } from "../../../utils/asyncStorage";
-import { addDeviceTokenApi } from "../../../services/common";
-import { CommonActions } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
 import { callLoginApi } from "../../../store/eatRoutesSlice";
 
